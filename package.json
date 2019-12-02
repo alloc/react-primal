@@ -1,0 +1,30 @@
+{
+  "name": "react-primal",
+  "version": "0.1.0",
+  "main": "lib/index.js",
+  "types": "lib/index.d.ts",
+  "react-native": {
+    "lib/index.js": "src/index.ts"
+  },
+  "scripts": {
+    "build": "tsc -p ."
+  },
+  "devDependencies": {
+    "@alloc/types": "^1.0.0",
+    "@types/jest": "^24.0.11",
+    "@types/react": "^16.9.14",
+    "@types/react-native": "^0.60.23",
+    "jest": "^24.1.0",
+    "prettier": "^1.19.1",
+    "react-spring": "npm:@react-spring/native@9.0.0-canary.808.12.11b2708",
+    "spec.ts": "^1.1.3",
+    "tslint": "^5.20.1",
+    "tslint-mango": "^0.1.12",
+    "typescript": "^3.6.3"
+  },
+  "peerDependencies": {
+    "react": "*",
+    "react-native": "*",
+    "react-spring": "*"
+  }
+}
