@@ -18,7 +18,7 @@ export const Box = maskProps<ViewProps, ViewStyle>(
   createStyleMask(require('ViewStylePropTypes'))
 )
 Box.displayName = 'Box'
-export type BoxProps = ComponentProps<typeof Box>
+export interface BoxProps extends ComponentProps<typeof Box> {}
 
 /**
  * The base `Text` component, but style props can be passed like normal props.
@@ -28,7 +28,7 @@ export const Text = maskProps<NativeTextProps, TextStyle>(
   createStyleMask(require('TextStylePropTypes'))
 )
 Text.displayName = 'Text'
-export type TextProps = ComponentProps<typeof Text>
+export interface TextProps extends ComponentProps<typeof Text> {}
 
 /**
  * The base `Image` component, but style props can be passed like normal props.
@@ -38,7 +38,7 @@ export const Image = maskProps<NativeImageProps, ImageStyle>(
   createStyleMask(require('ImageStylePropTypes'))
 )
 Image.displayName = 'Image'
-export type ImageProps = ComponentProps<typeof Image>
+export interface ImageProps extends ComponentProps<typeof Image> {}
 
 export { maskProps, createStyleMask }
 export * from './types'
