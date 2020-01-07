@@ -3,21 +3,26 @@ import { animated } from 'react-spring'
 import { MaskedProps, MaskedView, MaskView, PropMask } from './types'
 
 /** Provide new props and/or override existing props */
-export function maskProps<Props extends object, ForcedProps extends object>(
+export function maskProps<
+  Props extends object,
+  ForcedProps extends object,
+  Statics = unknown
+>(
   View: ComponentType<Props>,
   mask: (
     props: MaskedProps<typeof View, ForcedProps>
   ) => ComponentPropsWithRef<typeof View>
-): MaskView<MaskedView<Props>, ForcedProps>
+): MaskView<MaskedView<Props>, ForcedProps> & Statics
 
 /** Provide default props */
 export function maskProps<
   Props extends object,
-  DefaultProps extends Partial<Props>
+  DefaultProps extends Partial<Props>,
+  Statics = unknown
 >(
   View: ComponentType<Props>,
   props: DefaultProps
-): MaskView<MaskedView<Props>, {}, DefaultProps>
+): MaskView<MaskedView<Props>, {}, DefaultProps> & Statics
 
 export function maskProps(View: MaskedView<any, any>, mask: any) {
   const masks: PropMask[] = [
