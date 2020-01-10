@@ -1,6 +1,6 @@
 import { StyleSheet } from 'react-native'
 
-export const createStyleMask = (styleTypes: any) => (props: any) => {
+export const createStyleMask = <T = any>(styleTypes: T) => (props: T) => {
   const attrs: any = {}
   const style: any = {}
 

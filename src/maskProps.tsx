@@ -1,30 +1,27 @@
-import React, { ComponentPropsWithRef, ComponentType, forwardRef } from 'react'
+import { ComponentPropsWithRef, Overwrite, StaticProps } from '@alloc/types'
+import React, { ComponentProps, ComponentType, forwardRef } from 'react'
 import { animated } from 'react-spring'
-import { MaskedProps, MaskedView, MaskView, PropMask } from './types'
+import { MaskedView, PrimalType, PropMask } from './types'
 
 /** Provide new props and/or override existing props */
 export function maskProps<
-  Props extends object,
-  ForcedProps extends object,
-  Statics = unknown
+  T extends ComponentType<any>,
+  ForcedProps extends object = {}
 >(
-  View: ComponentType<Props>,
-  mask: (
-    props: MaskedProps<typeof View, ForcedProps>
-  ) => ComponentPropsWithRef<typeof View>
-): MaskView<MaskedView<Props>, ForcedProps> & Statics
+  View: T,
+  mask: (props: Overwrite<T, ForcedProps>) => ComponentPropsWithRef<T>
+): PrimalType<MaskedView<T>, ForcedProps> & StaticProps<T>
 
 /** Provide default props */
 export function maskProps<
-  Props extends object,
-  DefaultProps extends Partial<Props>,
-  Statics = unknown
+  T extends ComponentType<any>,
+  DefaultProps extends Partial<ComponentProps<T>>
 >(
-  View: ComponentType<Props>,
+  View: T,
   props: DefaultProps
-): MaskView<MaskedView<Props>, {}, DefaultProps> & Statics
+): PrimalType<MaskedView<T>, {}, DefaultProps> & StaticProps<T>
 
-export function maskProps(View: MaskedView<any, any>, mask: any) {
+export function maskProps(View: MaskedView, mask: any) {
   const masks: PropMask[] = [
     typeof mask === 'function' ? mask : (props: any) => ({ ...mask, ...props }),
   ]
@@ -40,21 +37,31 @@ export function maskProps(View: MaskedView<any, any>, mask: any) {
     return <View {...props} ref={ref} />
   })
 
-  MaskView.masks = masks
-  MaskView.extend = maskProps.bind(null, MaskView)
-  MaskView.viewType = View
-
   const AnimatedView = animated(View)
-  MaskView.Animated = forwardRef<any, any>((props, ref) => {
-    props = applyMasks(props, masks)
-    return <AnimatedView {...props} ref={ref} />
+  const displayName =
+    (View.render && getDisplayName(View.render)) ||
+    getDisplayName(View) ||
+    'Anonymous'
+
+  Object.assign(MaskView, View, {
+    masks,
+    extend: (maskProps as any).bind(null, MaskView),
+    render: MaskView.render,
+    viewType: View,
+    Animated: forwardRef<any, any>((props, ref) => {
+      props = applyMasks(props, masks)
+      return <AnimatedView {...props} ref={ref} />
+    }),
   })
 
-  MaskView.displayName = `Mask(${View.displayName || View.name || 'Anonymous'})`
-  MaskView.Animated.displayName = MaskView.displayName
+  MaskView.displayName = `Mask(${displayName})`
+  MaskView.Animated.displayName = `AnimatedMask(${displayName})`
   return MaskView
 }
 
 const applyMask = (props: any, mask: PropMask) => mask(props)
 const applyMasks = (props: any, masks: PropMask[]) =>
   masks.reduce(applyMask, props)
+
+const getDisplayName = (elementType: { displayName?: string; name?: string }) =>
+  elementType.displayName || elementType.name
