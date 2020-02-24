@@ -9,7 +9,9 @@ export function maskProps<
   ForcedProps extends object = {}
 >(
   View: T,
-  mask: (props: Overwrite<T, ForcedProps>) => ComponentPropsWithRef<T>
+  mask: (
+    props: Overwrite<ComponentProps<T>, ForcedProps>
+  ) => ComponentPropsWithRef<T>
 ): PrimalType<MaskedView<T>, ForcedProps> & StaticProps<T>
 
 /** Provide default props */
