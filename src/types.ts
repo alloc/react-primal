@@ -46,7 +46,7 @@ export interface PrimalType<
   viewType: View
   displayName?: string
 
-  extend: ComponentMask<this>
+  extend: ExtendComponent<this>
   Animated: AnimatedComponent<this>
 }
 
@@ -61,7 +61,7 @@ export type MaskView<
 /** For manipulation of component props */
 export type PropMask<Out = any> = <In = Out>(props: In) => Out
 
-export interface ComponentMask<View extends ElementType> {
+export interface ExtendComponent<View extends ElementType> {
   /** Provide new props and/or override existing props */
   <ForcedProps extends object>(
     mask: (props: MaskedProps<View, ForcedProps>) => ComponentPropsWithRef<View>
