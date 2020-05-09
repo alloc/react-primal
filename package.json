@@ -14,7 +14,7 @@
     "jest": "^24.1.0",
     "prettier": "^1.19.1",
     "react-native": "npm:@alloc/react-native-macos",
-    "react-spring": "npm:@react-spring/native@9.0.0-canary.808.12.11b2708",
+    "react-spring": "npm:@react-spring/native@9.0.0-rc.2",
     "spec.ts": "^1.1.3",
     "tslint": "^5.20.1",
     "tslint-mango": "^0.1.12",
