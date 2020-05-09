@@ -17,4 +17,5 @@ export * from './Text'
 export * from './Image'
 
 export { maskProps, createStyleMask }
+export * from './createExtendFn'
 export * from './types'
