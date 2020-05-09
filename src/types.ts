@@ -7,7 +7,13 @@ import {
   Overwrite,
   Pick,
 } from '@alloc/types'
-import { ComponentProps, FunctionComponent, ReactNode, Ref } from 'react'
+import {
+  ComponentProps,
+  FunctionComponent,
+  ReactElement,
+  ReactNode,
+  Ref,
+} from 'react'
 import { NativeMethodsMixin } from 'react-native'
 import { AnimatedComponent } from 'react-spring'
 
@@ -40,7 +46,7 @@ export interface PrimalType<
   ForcedProps extends object = {},
   DefaultProps extends object = {}
 > {
-  (props: MaskedProps<View, ForcedProps, DefaultProps>): JSX.Element
+  (props: MaskedProps<View, ForcedProps, DefaultProps>): ReactElement | null
 
   masks: PropMask[]
   viewType: View
