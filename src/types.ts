@@ -5,6 +5,7 @@ import {
   MergeDefaults,
   MergeUnknown,
   Overwrite,
+  Pick,
 } from '@alloc/types'
 import { ComponentProps, FunctionComponent, ReactNode, Ref } from 'react'
 import { NativeMethodsMixin } from 'react-native'
@@ -71,3 +72,21 @@ export interface ComponentMask<View extends ElementType> {
     props: DefaultProps & Partial<ComponentPropsWithRef<View>>
   ): MaskView<View, {}, DefaultProps>
 }
+
+/**
+ * Return a string union of the keys that exist in `B` and have a different
+ * type than the same property in `A`.
+ */
+type DiffKeys<A, B> = {
+  [P in keyof B]: P extends keyof A
+    ? [B[P], A[P]] extends [A[P], B[P]]
+      ? never
+      : P
+    : P
+}[keyof B]
+
+/**
+ * Return an object type whose properties exist in `B` and have a different
+ * type than the same property in `A`.
+ */
+export type DiffProps<A, B> = Pick<B, DiffKeys<A, B>>

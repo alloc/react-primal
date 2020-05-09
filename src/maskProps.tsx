@@ -1,18 +1,17 @@
-import { ComponentPropsWithRef, Overwrite, StaticProps } from '@alloc/types'
+import { ComponentPropsWithRef, StaticProps } from '@alloc/types'
 import React, { ComponentProps, ComponentType, forwardRef } from 'react'
 import { animated } from 'react-spring'
-import { MaskedView, PrimalType, PropMask } from './types'
+import { DiffProps, MaskedView, PrimalType, PropMask } from './types'
 
 /** Provide new props and/or override existing props */
 export function maskProps<
   T extends ComponentType<any>,
-  ForcedProps extends object = {}
+  Props extends object = {}
 >(
   View: T,
-  mask: (
-    props: Overwrite<ComponentProps<T>, ForcedProps>
-  ) => ComponentPropsWithRef<T>
-): PrimalType<MaskedView<T>, ForcedProps> & StaticProps<T>
+  mask: (props: ComponentProps<T> & Props) => ComponentPropsWithRef<T>
+): PrimalType<MaskedView<T>, DiffProps<ComponentProps<T>, Props>> &
+  StaticProps<T>
 
 /** Provide default props */
 export function maskProps<
