@@ -7,6 +7,10 @@
     "build": "tsc -p .",
     "prepare": "npm run build"
   },
+  "files": [
+    "src",
+    "lib"
+  ],
   "devDependencies": {
     "@alloc/types": "^1.0.0",
     "@types/jest": "^24.0.11",
