@@ -5,7 +5,8 @@
   "types": "lib/index.d.ts",
   "scripts": {
     "build": "tsc -p .",
-    "prepare": "npm run build"
+    "prepare": "npm run build",
+    "test": "tsc -p ./example"
   },
   "files": [
     "src",

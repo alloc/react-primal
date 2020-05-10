@@ -1,0 +1,8 @@
+{
+  "name": "@react-primal/example",
+  "private": true,
+  "version": "0.0.0-dev",
+  "dependencies": {
+    "react-primal": "link:.."
+  }
+}
