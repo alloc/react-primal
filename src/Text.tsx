@@ -8,7 +8,9 @@ import { maskProps } from './maskProps'
  */
 export const Text = maskProps(
   ReactNative.Text,
-  createStyleMask<ReactNative.TextStyle>(require('TextStylePropTypes'))
+  createStyleMask<ReactNative.TextStyle>(
+    require('react-native/Libraries/DeprecatedPropTypes/DeprecatedTextStylePropTypes')
+  )
 )
 
 export interface TextProps extends ComponentProps<typeof Text> {}

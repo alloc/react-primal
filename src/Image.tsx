@@ -8,7 +8,9 @@ import { maskProps } from './maskProps'
  */
 export const Image = maskProps(
   ReactNative.Image,
-  createStyleMask<ReactNative.ImageStyle>(require('ImageStylePropTypes'))
+  createStyleMask<ReactNative.ImageStyle>(
+    require('react-native/Libraries/DeprecatedPropTypes/DeprecatedImageStylePropTypes')
+  )
 )
 
 export interface ImageProps extends ComponentProps<typeof Image> {}

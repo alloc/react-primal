@@ -8,7 +8,9 @@ import { maskProps } from './maskProps'
  */
 export const Box = maskProps(
   ReactNative.View,
-  createStyleMask<ReactNative.ViewStyle>(require('ViewStylePropTypes'))
+  createStyleMask<ReactNative.ViewStyle>(
+    require('react-native/Libraries/DeprecatedPropTypes/DeprecatedViewStylePropTypes')
+  )
 )
 Box.displayName = 'Box'
 export interface BoxProps extends ComponentProps<typeof Box> {}
