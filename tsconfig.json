@@ -4,6 +4,7 @@
   "compilerOptions": {
     "declaration": true,
     "esModuleInterop": true,
+    "importHelpers": true,
     "jsx": "react",
     "lib": ["es2017"],
     "moduleResolution": "node",

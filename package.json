@@ -12,6 +12,9 @@
     "src",
     "lib"
   ],
+  "dependencies": {
+    "tslib": "^1.13.0"
+  },
   "devDependencies": {
     "@alloc/types": "^1.0.0",
     "@types/jest": "^24.0.11",
