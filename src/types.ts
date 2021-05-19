@@ -1,12 +1,9 @@
+import { MergeDefaults, MergeUnknown, Overwrite, Pick } from '@alloc/types'
 import {
   ComponentPropsWithRef,
   ComponentType,
   ElementType,
-  MergeDefaults,
-  MergeUnknown,
-  Overwrite,
-  Pick,
-} from '@alloc/types'
+} from '@alloc/types/react'
 import {
   ComponentProps,
   FunctionComponent,

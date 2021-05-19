@@ -1,5 +1,6 @@
-import { ComponentPropsWithRef, StaticProps } from '@alloc/types'
-import React, { ComponentProps, ComponentType, forwardRef } from 'react'
+import { StaticProps } from '@alloc/types'
+import { ComponentPropsWithRef, ComponentType } from '@alloc/types/react'
+import React, { ComponentProps, forwardRef } from 'react'
 import { animated } from 'react-spring'
 import { DiffProps, MaskedView, PrimalType, PropMask } from './types'
 
