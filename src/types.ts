@@ -12,7 +12,7 @@ import {
   Ref,
 } from 'react'
 import { NativeMethodsMixin } from 'react-native'
-import { AnimatedComponent } from 'react-spring'
+import { AnimatedComponent } from 'react-haru/native'
 
 /** The component type being masked. */
 export type MaskedView<

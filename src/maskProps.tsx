@@ -1,7 +1,7 @@
 import { StaticProps } from '@alloc/types'
 import { ComponentPropsWithRef, ComponentType } from '@alloc/types/react'
 import React, { ComponentProps, forwardRef } from 'react'
-import { animated } from 'react-spring'
+import { animated } from 'react-haru/native'
 import { DiffProps, MaskedView, PrimalType, PropMask } from './types'
 
 /** Provide new props and/or override existing props */
